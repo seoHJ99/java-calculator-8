@@ -12,6 +12,17 @@ public class InputExtractor {
         this.validator = validator;
     }
 
+    public List<Integer> getNumbers(String input) {
+        List<Integer> numList = new ArrayList<>();
+        String[] elements = splitBySeparators(input);
+
+        for (String element : elements) {
+            validator.validateInputNumber(element);
+            numList.add(Integer.parseInt(element));
+        }
+
+        return numList;
+    }
 
     private String[] splitBySeparators(String input) {
 
