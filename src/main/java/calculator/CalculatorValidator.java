@@ -1,10 +1,10 @@
 package calculator;
 
 public class CalculatorValidator {
-    private static final String CUSTOM_SEPARATOR_START = "//";
-    private static final String CUSTOM_SEPARATOR_END = "\\n";
-    private static final String BASIC_SEPARATOR_1 =",";
-    private static final String BASIC_SEPARATOR_2 =":";
+    public static final String CUSTOM_SEPARATOR_START = "//";
+    public static final String CUSTOM_SEPARATOR_END = "\\n";
+    public static final String BASIC_SEPARATOR_1 =",";
+    public static final String BASIC_SEPARATOR_2 =":";
 
     public boolean hasCustomSeparator(String input){
         if(input.startsWith(CUSTOM_SEPARATOR_START) && input.indexOf(CUSTOM_SEPARATOR_END) >0){
@@ -23,14 +23,7 @@ public class CalculatorValidator {
         return true;
     }
 
-    private boolean isBasicSeparator(String separator){
-        if(separator.equals(BASIC_SEPARATOR_1) || separator.equals(BASIC_SEPARATOR_2)){
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isNumber(String input){
+    public boolean isNumber(String input){
         try{
             Integer.parseInt(input);
             return true;
@@ -38,4 +31,13 @@ public class CalculatorValidator {
             return false;
         }
     }
+
+    private boolean isBasicSeparator(String separator){
+        if(separator.equals(BASIC_SEPARATOR_1) || separator.equals(BASIC_SEPARATOR_2)){
+            return true;
+        }
+        return false;
+    }
+
+
 }
