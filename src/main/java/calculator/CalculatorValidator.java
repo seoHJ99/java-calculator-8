@@ -17,13 +17,24 @@ public class CalculatorValidator {
         if(isBasicSeparator(separator))
             throw new IllegalArgumentException("신규 커스텀 구분자를 추가해 주세요");
 
+        // todo 수정 필요. 그냥 구분자에 숫자가 포함되지 않도록 리팩토링 하자.
         if(isNumber(separator))
             throw new IllegalArgumentException("구분자는 숫자일수 없습니다.");
 
         return true;
     }
 
-    public boolean isNumber(String input){
+    public boolean validateInputNumber(String element){
+        if(!isNumber(element))
+            throw new IllegalArgumentException("더하려는 값이 숫자가 아닙니다.");
+
+        if(Integer.parseInt(element) <0)
+            throw new IllegalArgumentException("양수만 입력받을 수 있습니다.");
+
+        return true;
+    }
+
+    private boolean isNumber(String input){
         try{
             Integer.parseInt(input);
             return true;
