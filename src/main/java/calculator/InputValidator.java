@@ -1,6 +1,6 @@
 package calculator;
 
-public class CalculatorValidator {
+public class InputValidator {
     public static final String CUSTOM_SEPARATOR_START = "//";
     public static final String CUSTOM_SEPARATOR_END = "\\n";
     public static final String BASIC_SEPARATOR_1 =",";
