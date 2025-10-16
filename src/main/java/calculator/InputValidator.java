@@ -43,11 +43,17 @@ public class InputValidator {
         return true;
     }
 
-    private boolean isNumber(String input){
-        try{
+    public boolean isEmpty(String element) {
+        if (element == null || element.equals(""))
+            return true;
+        return false;
+    }
+
+    private boolean isNumber(String input) {
+        try {
             Integer.parseInt(input);
             return true;
-        }catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             return false;
         }
     }
