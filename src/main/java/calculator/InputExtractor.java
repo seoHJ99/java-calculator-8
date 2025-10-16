@@ -6,10 +6,17 @@ import java.util.List;
 
 public class InputExtractor {
 
+    private static InputExtractor inputExtractor;
+
     private InputValidator validator;
 
-    public InputExtractor(InputValidator validator) {
-        this.validator = validator;
+    private InputExtractor() {
+        this.validator = InputValidator.getInstance();
+    }
+
+    public static InputExtractor getInstance(){
+        if(inputExtractor == null) inputExtractor = new InputExtractor();
+        return inputExtractor;
     }
 
     public List<Integer> getNumbers(String input) {
