@@ -43,6 +43,10 @@ public class CalculatorValidator {
         }
     }
 
+    private boolean hasNumber(String input){
+        return input.matches(".*\\d.*");
+    }
+
     private boolean isBasicSeparator(String separator){
         if(separator.equals(BASIC_SEPARATOR_1) || separator.equals(BASIC_SEPARATOR_2)){
             return true;
