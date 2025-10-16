@@ -2,6 +2,7 @@ package calculator;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class InputExtractor {
@@ -21,7 +22,10 @@ public class InputExtractor {
 
     public List<Integer> getNumbers(String input) {
         List<Integer> numList = new ArrayList<>();
-        String[] elements = splitBySeparators(input);
+
+        String separator = getCustomSeparator(input);
+        input = replaceCustomSeparator(input);
+        String[] elements = splitBySeparators(input, separator);
 
         for (String element : elements) {
             validator.validateInputNumber(element);
@@ -31,18 +35,25 @@ public class InputExtractor {
         return numList;
     }
 
-    private String[] splitBySeparators(String input) {
+    private String replaceCustomSeparator(String input){
+        if(!validator.hasCustomSeparator(input))
+            return input;
+
+        int endPoint = input.indexOf(InputValidator.CUSTOM_SEPARATOR_END) + InputValidator.CUSTOM_SEPARATOR_END.length();
+        return input.substring(endPoint);
+    }
+
+    private String[] splitBySeparators(String input, String separator) {
 
         String regex = InputValidator.BASIC_SEPARATOR_1 + "|" + InputValidator.BASIC_SEPARATOR_2;
 
-        if (!validator.hasCustomSeparator(input)) {
+        if (separator == null) {
             return input.split(regex);
         }
 
-        regex += "|" + getCustomSeparator(input);
-        int endPoint = input.indexOf(InputValidator.CUSTOM_SEPARATOR_END) + InputValidator.CUSTOM_SEPARATOR_END.length();
+        regex += "|" + separator;
 
-        return input.substring(endPoint).split(regex);
+        return input.split(regex);
     }
 
     private String getCustomSeparator(String input) {
