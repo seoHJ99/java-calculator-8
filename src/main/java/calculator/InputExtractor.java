@@ -40,11 +40,17 @@ public class InputExtractor {
 
     private String getCustomSeparator(String input) {
 
-        if (validator.hasCustomSeparator(input)) {
-            int startPoint = InputValidator.CUSTOM_SEPARATOR_START.length();
-            int endPoint = input.indexOf(InputValidator.CUSTOM_SEPARATOR_END);
-            return input.substring(startPoint, endPoint);
+        if (!validator.hasCustomSeparator(input)) {
+            return null;
         }
-        return null;
+
+        int startPoint = InputValidator.CUSTOM_SEPARATOR_START.length();
+        int endPoint = input.indexOf(InputValidator.CUSTOM_SEPARATOR_END);
+        String customSeparator = input.substring(startPoint, endPoint);
+
+        if(!validator.validateCustomSeparator(customSeparator))
+            return null;
+
+        return customSeparator;
     }
 }
