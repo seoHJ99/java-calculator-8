@@ -25,6 +25,11 @@ public class InputExtractor {
 
         String separator = getCustomSeparator(input);
         input = replaceCustomSeparator(input);
+
+        if(validator.isEmpty(input)){
+            return numList;
+        }
+
         String[] elements = splitBySeparators(input, separator);
 
         for (String element : elements) {
