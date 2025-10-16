@@ -17,9 +17,9 @@ public class CalculatorValidator {
         if(isBasicSeparator(separator))
             throw new IllegalArgumentException("신규 커스텀 구분자를 추가해 주세요");
 
-        // todo 수정 필요. 그냥 구분자에 숫자가 포함되지 않도록 리팩토링 하자.
-        if(isNumber(separator))
-            throw new IllegalArgumentException("구분자는 숫자일수 없습니다.");
+        // 구분자에 숫자를 포함시키면 실제 숫자와 구분자의 경계가 모호해짐
+        if(hasNumber(separator))
+            throw new IllegalArgumentException("구분자에는 숫자가 포함될 수 없습니다.");
 
         return true;
     }
