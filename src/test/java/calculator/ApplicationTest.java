@@ -49,6 +49,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"//1,2:3", "//;1,2:3;4", ";\\n1,2:3;4", "-1,2:3", "//s100s\n1,2:3", "1,a:3"})
+    void 예외_테스트2(String input) {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException(input))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
