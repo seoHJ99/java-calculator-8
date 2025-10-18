@@ -7,17 +7,10 @@ import java.util.List;
 
 public class InputExtractor {
 
-    private static InputExtractor inputExtractor;
-
     private InputValidator validator;
 
-    private InputExtractor() {
-        this.validator = InputValidator.getInstance();
-    }
-
-    public static InputExtractor getInstance(){
-        if(inputExtractor == null) inputExtractor = new InputExtractor();
-        return inputExtractor;
+    public InputExtractor(InputValidator inputValidator){
+        this.validator = inputValidator;
     }
 
     public List<Integer> getNumbers(String input) {

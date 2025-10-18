@@ -7,14 +7,15 @@ public class Calculator {
 
     private static Calculator calculator;
 
-    private Calculator(){
-        this.inputExtractor = InputExtractor.getInstance();
+    private Calculator(InputExtractor inputExtractor){
+        this.inputExtractor = inputExtractor;
     }
 
-    public static Calculator getInstance(){
+    public static Calculator getInstance(InputExtractor inputExtractor){
         if(calculator == null){
-            calculator = new Calculator();
+            calculator = new Calculator(inputExtractor);
         }
+        calculator.inputExtractor = inputExtractor;
         return calculator;
     }
 
