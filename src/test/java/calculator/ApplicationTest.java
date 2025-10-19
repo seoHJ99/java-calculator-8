@@ -19,10 +19,11 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    @Test
-    void 공백값_입력_테스트() {
+    @ParameterizedTest
+    @ValueSource(strings = {"\n", " "})
+    void 공백값_입력_테스트(String input) {
         assertSimpleTest(() -> {
-            run("\n");
+            run(input);
             assertThat(output()).contains("결과 : 0");
         });
     }
@@ -50,7 +51,7 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"//1,2:3", "//;1,2:3;4", ";\\n1,2:3;4", "-1,2:3", "//s100s\n1,2:3", "1,a:3"})
+    @ValueSource(strings = {"//1,2:3", "//;1,2:3;4", ";\\n1,2:3;4", "-1,2:3", "//s100s\n1,2:3", "1,a:3", "0"})
     void 예외_테스트2(String input) {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException(input))
