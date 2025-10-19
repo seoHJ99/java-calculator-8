@@ -22,7 +22,7 @@ public class Calculator {
     public long addInputNums(String input) {
         List<Integer> inputNums = inputExtractor.getNumbers(input);
         return inputNums.stream()
-                .mapToInt(Integer::intValue)
+                .mapToLong(Integer::intValue)
                 .sum();
     }
 }
