@@ -5,7 +5,7 @@ public class Application {
         InputValidator inputValidator = new InputValidator();
         InputExtractor inputExtractor = new InputExtractor(inputValidator);
         Calculator calculator = Calculator.getInstance(inputExtractor);
-        int result = calculator.addInputNums(InputView.inputWords());
+        long result = calculator.addInputNums(InputView.inputWords());
         OutputView.outputResult(result);
     }
 }

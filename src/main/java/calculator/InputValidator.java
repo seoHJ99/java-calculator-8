@@ -26,8 +26,11 @@ public class InputValidator {
 
     public boolean validateInputNumber(String element) {
 
-        if (!isNumber(element))
+        if(!isDigits(element))
             throw new IllegalArgumentException("더하려는 값이 숫자가 아닙니다.");
+
+        if (!isInt(element))
+            throw new IllegalArgumentException("숫자가 너무 큽니다.");
 
         if (Integer.parseInt(element) <= 0)
             throw new IllegalArgumentException("양수만 입력받을 수 있습니다.");
@@ -41,7 +44,11 @@ public class InputValidator {
         return false;
     }
 
-    private boolean isNumber(String input) {
+    public static boolean isDigits(String input) {
+        return input.matches("\\d+");
+    }
+
+    private boolean isInt(String input) {
         try {
             Integer.parseInt(input);
             return true;

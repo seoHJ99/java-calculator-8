@@ -19,7 +19,7 @@ public class Calculator {
         return calculator;
     }
 
-    public int addInputNums(String input) {
+    public long addInputNums(String input) {
         List<Integer> inputNums = inputExtractor.getNumbers(input);
         return inputNums.stream()
                 .mapToInt(Integer::intValue)
