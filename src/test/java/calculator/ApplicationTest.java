@@ -33,7 +33,8 @@ class ApplicationTest extends NsTest {
             "'//;\\n', '0'",
             "'1,2:3', '6'",
             "'//;\\n', '0'",
-            "'//a\\n1a2:3a4', '10'"
+            "'//a\\n1a2:3a4', '10'",
+            "'2147483647,1', 2147483648"
     })
     void 정상값_입력값_테스트(String input, String output) {
         assertSimpleTest(() -> {
@@ -51,7 +52,7 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"//1,2:3", "//;1,2:3;4", ";\\n1,2:3;4", "-1,2:3", "//s100s\n1,2:3", "1,a:3", "0"})
+    @ValueSource(strings = {"//1,2:3", "//;1,2:3;4", ";\\n1,2:3;4", "-1,2:3", "//s100s\n1,2:3", "1,a:3", "0", "2147483648"})
     void 예외_테스트2(String input) {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException(input))
