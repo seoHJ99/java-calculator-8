@@ -7,6 +7,6 @@ public class InputView {
 
     public static String inputWords() {
         System.out.println(INTRO);
-        return Console.readLine();
+        return Console.readLine().trim();
     }
 }
