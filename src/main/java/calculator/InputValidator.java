@@ -29,7 +29,7 @@ public class InputValidator {
         if (!isNumber(element))
             throw new IllegalArgumentException("더하려는 값이 숫자가 아닙니다.");
 
-        if (Integer.parseInt(element) < 0)
+        if (Integer.parseInt(element) <= 0)
             throw new IllegalArgumentException("양수만 입력받을 수 있습니다.");
 
         return true;
